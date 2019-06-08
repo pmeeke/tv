@@ -1,11 +1,5 @@
 #!/bin/sh
-# tv_grab_file for remote XMLTV file
+#tv_grab_file for remote XMLTV file
 
-if [ $# = 0 ]
-then
-    wget -q -O ~/.xmltv/tv_grab_file.xmltv "$1"
-    cat ~/.xmltv/tv_grab_file.xmltv
-  exit 0
-fi
-
-exit 0
+        wget -r -O /home/hts/.xmltv/tv_grab_file.xmltv "$1"
+        cat /home/hts/.xmltv/tv_grab_file.xmltv | socat - UNIX-CONNECT:/home/hts/.hts/tvheadend/epggrab/xmltv.sock 2>/dev/null
